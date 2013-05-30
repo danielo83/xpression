@@ -1,17 +1,44 @@
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-<uses-permission android:name="android.permission.WAKE_LOCK" />
-<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-<uses-permission android:name="android.permission.GET_TASKS" />
-<permission android:name="xpression.permission.C2D_MESSAGE" android:protectionLevel="signature" />
-<uses-permission android:name="xpression.permission.C2D_MESSAGE" />
-
-<activity android:name="com.plugin.GCM.PushHandlerActivity"/>
-<receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
-  <intent-filter>
-    <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-    <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-    <category android:name="xpression" />
-  </intent-filter>
+<activity android:name="com.arellomobile.android.push.PushWebview"/>
+ 
+<activity android:name="com.arellomobile.android.push.MessageActivity"/>
+ 
+<activity android:name="com.arellomobile.android.push.PushHandlerActivity"/>
+ 
+<!--
+  BroadcastReceiver that will receive intents from GCM
+  services and handle them to the custom IntentService.
+ 
+  The com.google.android.c2dm.permission.SEND permission is necessary
+  so only GCM services can send data messages for the app.
+-->
+<receiver
+        android:name="com.google.android.gcm.GCMBroadcastReceiver"
+        android:permission="com.google.android.c2dm.permission.SEND">
+    <intent-filter>
+        <!-- Receives the actual messages. -->
+        <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+        <!-- Receives the registration id. -->
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+        <category android:name="com.phonegap.xpression"/>
+    </intent-filter>
 </receiver>
-<service android:name="com.google.android.gcm.GCMIntentService" />
+ 
+<!--
+  Application-specific subclass of PushGCMIntentService that will
+  handle received messages.
+-->
+<service android:name="com.arellomobile.android.push.PushGCMIntentService"/>
+<activity android:name="xpression"
+           android:label="@string/app_name"
+           android:configChanges="orientation|keyboardHidden"
+           android:launchMode="singleTop"
+         >
+     <intent-filter>
+         <action android:name="xpression.MESSAGE"/>
+         <category android:name="android.intent.category.DEFAULT"/>
+     </intent-filter>
+     <intent-filter>
+         <action android:name="android.intent.action.MAIN"/>
+         <category android:name="android.intent.category.LAUNCHER"/>
+     </intent-filter>
+ </activity>
