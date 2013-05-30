@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "com.phonegap.xpression"
+    version   = "1.0.0">
+	
+<icon src="icon.png" />
+<preference name="auto-hide-splash-screen" value="false" />
+<gap:splash src="/android/xhdpi.png" />
+<gap:splash src="android/ldpi.png" gap:platform="android" gap:density="ldpi" />
+<gap:splash src="android/mdpi.png" gap:platform="android" gap:density="mdpi" />
+<gap:splash src="android/hdpi.png" gap:platform="android" gap:density="hdpi" />
+<gap:splash src="android/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+<preference name="show-splash-screen-spinner" value="true" />
+<preference name="splash-screen-duration" value="5000" />
+<gap:plugin name="GenericPush" /> <!-- latest release -->
+
+<name>xpression</name>
+
+
+<author href="https://www.danielo.it" email="danielo@danielo.it">
+Daniele Spadafora
+</author>
+
+</widget>
