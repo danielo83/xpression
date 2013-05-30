@@ -14,6 +14,7 @@
 <preference name="show-splash-screen-spinner" value="true" />
 <preference name="splash-screen-duration" value="5000" />
 <gap:plugin name="GenericPush" /> <!-- latest release -->
+<access origin="*.pushwoosh.com"/>
 
 <name>xpression</name>
 
